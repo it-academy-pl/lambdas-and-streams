@@ -12,7 +12,7 @@ public class AbsoluteMaxExercise {
                 .map(absolute)
                 .reduce(maxFinder);
     }
-    private static Function<Integer, Integer> absolute;
+    private static Function<Integer, Integer> absolute = a -> Math.abs(a);
 
-    private static BinaryOperator<Integer> maxFinder;
+    private static BinaryOperator<Integer> maxFinder = (a,b)-> Math.max(a,b);
 }

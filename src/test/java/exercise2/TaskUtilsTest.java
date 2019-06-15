@@ -37,22 +37,17 @@ public class TaskUtilsTest {
     }
 
     @Test
-    public void getAllPassedTasks() {
+    public void getAllPassedTasks() { //wszystkie zaliczone taski
         assertThat(taskUtils.getAllPassedTasks(performedTasks)).containsExactly(performedTask2);
     }
 
     @Test
-    public void getAllPassedTasksWhenNoTestWasPassed() {
-        assertThat(taskUtils.getAllPassedTasks(Arrays.asList(performedTask1))).isEqualTo(Collections.emptyList());
-    }
-
-    @Test
-    public void getTasksPerformedAtLeastOnce() {
+    public void getTasksPerformedAtLeastOnce() { //wszystkie taski ktore byly wykonane przynajmniej raz
         assertThat(taskUtils.getAllTasksPerformedAtLeastOnce(performedTasks)).containsExactly(task1, task2);
     }
 
     @Test
-    public void getTasksNotSolvedCorrectlyEvenOnce() {
+    public void getTasksNotSolvedCorrectlyEvenOnce() { //taski ktore ani raz nie byly wykonane poprawnie
         assertThat(taskUtils.getTasksSolveCorrectlyAtLeastOnce(performedTasks)).containsExactly(task1);
     }
 
