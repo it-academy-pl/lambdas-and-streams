@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class TaskUtilsTest {
     private List<PerformedTask> performedTasks = new ArrayList<>();
     private List<Task> tasks = new ArrayList<>();
-    TaskUtils taskUtils;
+
     Task task1;
     Task task2;
     PerformedTask performedTask1;
@@ -24,7 +24,7 @@ public class TaskUtilsTest {
 
     @Before
     public void setUp() {
-        taskUtils = new TaskUtils();
+    
         task1 = new Task(1, "task 1", 5, 20d);
         task2 = new Task(1, "task 2", 10, 100d);
         tasks.add(task1);
@@ -54,7 +54,7 @@ public class TaskUtilsTest {
         List<Task> tasksPerformedAtLeastOnce = new ArrayList<>();
         tasksPerformedAtLeastOnce.add(task1);
         tasksPerformedAtLeastOnce.add(task2);
-        assertEquals(tasksPerformedAtLeastOnce, taskUtils.getAllTasksPerformedAtLeastOnce.apply(performedTasks));
+        assertEquals(tasksPerformedAtLeastOnce, TaskUtils.getAllTasksPerformedAtLeastOnce.apply(performedTasks));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class TaskUtilsTest {
 
         List<Task> tasksSolvedCorrectlyAtLeastOnce = new ArrayList<>();
         tasksSolvedCorrectlyAtLeastOnce.add(task1);
-        assertEquals(tasksSolvedCorrectlyAtLeastOnce, taskUtils.getTasksSolveCorrectlyAtLeastOnce.apply(performedTasks));
+        assertEquals(tasksSolvedCorrectlyAtLeastOnce, TaskUtils.getTasksSolveCorrectlyAtLeastOnce.apply(performedTasks));
     }
 
     @Test
@@ -72,7 +72,7 @@ public class TaskUtilsTest {
 
         List<Task> tasksNotSolvedCorrectlyEvenOnce = new ArrayList<>();
         tasksNotSolvedCorrectlyEvenOnce.add(task2);
-        List<Task> tasksSolvedCorrectlyAtLeastOnce = taskUtils.getTasksSolveCorrectlyAtLeastOnce.apply(performedTasks);
+        List<Task> tasksSolvedCorrectlyAtLeastOnce = TaskUtils.getTasksSolveCorrectlyAtLeastOnce.apply(performedTasks);
 
         assertEquals(tasksNotSolvedCorrectlyEvenOnce, tasks.stream().filter(e -> !tasksSolvedCorrectlyAtLeastOnce.contains(e)).collect(Collectors.toList()));
     }
