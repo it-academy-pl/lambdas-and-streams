@@ -10,17 +10,17 @@ import java.util.stream.Collectors;
 public class TaskUtils {
 
     public List<PerformedTask> getAllPassedTasks(List<PerformedTask> performedTasks) {
-        return performedTasks.stream().filter(p -> p.isTaskPassed()).collect(Collectors.toList());
+        return performedTasks.stream().filter(PerformedTask::isTaskPassed).collect(Collectors.toList());
     };
 
     List<Task> getAllTasksPerformedAtLeastOnce(List<PerformedTask> performedTasks) {
-        return performedTasks.stream().map(performedTask -> performedTask.getTask()).distinct().collect(Collectors.toList());
+        return performedTasks.stream().map(PerformedTask::getTask).distinct().collect(Collectors.toList());
     }
 
     public List<Task> getTasksSolveCorrectlyAtLeastOnce(List<PerformedTask> performedTasks) {
         return performedTasks.stream()
-                .filter(performedTask -> performedTask.isTaskPassed())
-                .map(performedTask -> performedTask.getTask())
+                .filter(PerformedTask::isTaskPassed)
+                .map(PerformedTask::getTask)
                 .distinct()
                 .collect(Collectors.toList());
     };
